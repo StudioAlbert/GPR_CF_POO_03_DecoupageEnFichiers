@@ -1,10 +1,9 @@
-cmake_minimum_required(VERSION 4.2)
-project("GPR-CF-POO-03 - Decoupage en fichiers")
+cmake_minimum_required(VERSION 3.16)
+project(GPR_CF_POO_03_DecoupageEnFichiers CXX)
 
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Une seule source aujourd'hui. A chaque fichier sorti de main.cpp, ajoutez-le ici.
-add_executable(Donjon
-    "Exercice_5/main.cpp"
-)
-target_include_directories(Donjon PRIVATE "Exercice_5")
+add_subdirectory(01_donjon_monolithe)
+add_subdirectory(02_forward_declaration)

@@ -1,24 +1,27 @@
 # Le donjon — companion GPR-CF-POO-03
 
-Le point de départ des exercices de la séance *Découpage en fichiers* : un petit jeu de
-donjon en console, **entièrement dans un seul `main.cpp`** de près de 300 lignes.
+Une étape par point du cours, une target par étape.
 
-Il marche. Il est juste illisible — et c'est le sujet.
+| Étape | Ce qu'elle montre |
+|---|---|
+| `01_donjon_monolithe` | le point de départ : un jeu de donjon **entièrement dans un seul `main.cc`** de près de 300 lignes. Il marche, il est juste illisible — et c'est le sujet. |
+| `02_forward_declaration` | deux classes qui se référencent : l'inclusion circulaire, et la déclaration anticipée qui la coupe. |
 
 ## Compiler et lancer
 
-```bash
+```powershell
 cmake -S . -B build
 cmake --build build
-./build/Donjon               # Windows : build\Debug\Donjon.exe
 ```
+
+Puis `build/01_donjon_monolithe/01_donjon_monolithe.exe`.
 
 Commandes du jeu : `z s q d` pour se déplacer, `a` pour attaquer, `j` pour lire le journal,
 `x` pour sortir.
 
 ## Les quatre concepts à séparer
 
-`Exercice_5/main.cpp` est découpé par des bandeaux de commentaires. Chacun devient un duo
+`01_donjon_monolithe/main.cc` est découpé par des bandeaux de commentaires. Chacun devient un duo
 de fichiers.
 
 | Concept | Ce qu'il porte | Dépend de |
@@ -36,10 +39,13 @@ personne.
 - **le jeu se comporte exactement pareil** après le découpage qu'avant ;
 - une **garde** en première ligne de chaque `.h` ;
 - dans chaque en-tête, seulement ce que la **déclaration** exige — `<vector>` n'a rien à
-  faire dans `Vector2.h` ;
-- chaque `.cpp` déclaré dans le `CMakeLists.txt`, et aucun `.h`.
+  faire dans `vector2.h` ;
+- chaque `.cc` déclaré dans le `CMakeLists.txt`, et aucun `.h`.
 
 ## Attention
 
-`main.cpp` ne contient **aucune** garde d'inclusion aujourd'hui, et c'est normal : un `.cpp`
+`main.cc` ne contient **aucune** garde d'inclusion aujourd'hui, et c'est normal : un `.cc`
 n'est jamais inclus par personne. Les gardes sont pour les en-têtes que vous allez créer.
+
+Conventions : voir `01 courses/companion projects/CLAUDE.md` et la skill `programmation-cpp`
+— en-têtes en `.h` dans `include/`, implémentations en `.cc` dans `src/`.

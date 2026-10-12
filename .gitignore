@@ -1,16 +1,6 @@
-# Build
 build/
 cmake-build-*/
 out/
-
-# IDE
 .idea/
 .vs/
 .vscode/
-*.user
-
-# Binaires
-*.exe
-*.o
-*.obj
-*.pdb
